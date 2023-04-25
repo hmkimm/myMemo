@@ -87,6 +87,7 @@ ul {
 li {
   padding: 0 10px;
   width: 100%;
+  font-size: 14px;
 }
 
 /* 리스트 스타일 */
@@ -102,13 +103,13 @@ li {
   background-color: white;
 }
 
-ul button {
-  float: right;
+div button {
+  /* float: right; */
   background-color: black;
   color: white;
   border: none;
   padding: 5px 10px;
-  height: 52px;
+  height: 54px;
   border-radius: 0 4px 4px 0;
   box-sizing: border-box;
 }

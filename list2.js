@@ -14,8 +14,10 @@ const delItem = (event) => {
   const target = event.target.parentElement;
 
   todos = todos.filter((todo) => todo.id != target.id);
-  save();
+
+  // save();
   target.remove();
+  save();
 };
 
 const addItem = (todo) => {
@@ -55,7 +57,6 @@ const addItem = (todo) => {
 const delAllItem = (event) => {
   const $liLists = document.querySelectorAll("div");
   const yes = confirm("정말 모두 삭제하시겠습니까?");
-  console.log($liLists);
 
   if (yes) {
     for (let i = 0; i < $liLists.length; i++) {
@@ -80,7 +81,10 @@ const handler = (event) => {
 
   input.value = "";
   textarea.value = "";
-  display.prepend(ul);
+  // display.prepend(ul);
+
+  // 로컬스토리지에 todos 배열을 저장합니다.
+  localStorage.setItem("todos", JSON.stringify(todos));
 };
 
 form.addEventListener("submit", handler);
@@ -98,4 +102,5 @@ const init = () => {
     todos = userTodos;
   }
 };
+
 init();
