@@ -3,6 +3,7 @@ const input = document.querySelector("input");
 const textarea = document.querySelector("textarea");
 const ul = document.querySelector("ul");
 const delAll = document.querySelector(".delAll");
+const display = document.querySelector("display");
 
 let todos = [];
 const save = () => {
@@ -19,33 +20,42 @@ const delItem = (event) => {
 
 const addItem = (todo) => {
   if (todo.text !== "") {
+    const liWrapper = document.createElement("div");
     const li = document.createElement("li");
     const button = document.createElement("button");
     const span = document.createElement("span");
     const span1 = document.createElement("span");
+    const p = document.createElement("p");
 
     span.innerText = todo.text + " : ";
     button.innerHTML = "X";
     span1.innerHTML = todo.context;
+    p.innerHTML = new Date().toLocaleDateString();
 
     button.addEventListener("click", delItem);
     delAll.addEventListener("click", delAllItem);
 
-    ul.append(li);
-    li.append(span, span1, button);
+    ul.append(liWrapper);
+    liWrapper.append(li, button);
+    li.append(p, span, span1);
     li.id = todo.id;
+
+    // li 스타일 적용
     li.classList.add("li-style");
     li.addEventListener("click", () => {
       li.classList.toggle("horizontal-line");
     });
+    p.setAttribute("class", "date");
+    liWrapper.setAttribute("class", "wrapper");
   } else if (todo.text === "") {
     // alert("할 일을 입력하세요!");
   }
 };
 
 const delAllItem = (event) => {
-  const $liLists = document.querySelectorAll("li");
+  const $liLists = document.querySelectorAll("div");
   const yes = confirm("정말 모두 삭제하시겠습니까?");
+  console.log($liLists);
 
   if (yes) {
     for (let i = 0; i < $liLists.length; i++) {
@@ -69,6 +79,8 @@ const handler = (event) => {
   save();
 
   input.value = "";
+  textarea.value = "";
+  display.prepend(ul);
 };
 
 form.addEventListener("submit", handler);
