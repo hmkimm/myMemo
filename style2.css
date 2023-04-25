@@ -1,0 +1,133 @@
+/* reset css */
+
+@font-face {
+  font-family: "Dovemayo_gothic";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+input,
+button,
+li {
+  cursor: pointer;
+}
+li {
+  list-style: none;
+}
+/* layout */
+
+body {
+  padding: 0 80px;
+  font-family: "Ubuntu", "Dovemayo_gothic", sans-serif;
+}
+.text-wrapper {
+  display: flex;
+}
+article {
+  background-color: #f4dcb2;
+  /* height: 100vh */
+  padding: 30px;
+  height: 800px;
+}
+
+input {
+  height: 35px;
+  margin: 50px 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font: inherit;
+  box-sizing: border-box;
+}
+textarea {
+  width: 100%;
+  height: 90px;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid #ddd;
+  font: inherit;
+  padding: 10px 0px 0 15px;
+  box-sizing: border-box;
+}
+/* main*/
+h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.text {
+  width: calc(100% - 10px);
+  border: none;
+  border-radius: 4px 0 0 4px;
+  padding-left: 15px;
+}
+.add {
+  width: 33px;
+  height: 90px;
+  background-color: black;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  border: none;
+}
+.delAll {
+  display: block;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  padding: 4px;
+  margin-left: auto;
+}
+
+.list-wrap {
+  margin-bottom: 20px;
+}
+
+ul {
+  margin-top: 20px;
+}
+li {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  padding-left: 10px;
+}
+
+/* 리스트 스타일 */
+.li-style {
+  margin-bottom: 15px;
+  border-radius: 4px;
+  padding: 6px 0 6px 15px;
+  font-weight: normal;
+  background-color: white;
+}
+
+li button {
+  float: right;
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  margin-top: -2px;
+}
+
+.horizontal-line {
+  text-decoration: line-through;
+  color: gray;
+  background-color: gainsboro;
+}
+
+/* 모바일 화면 */
+
+@media (max-width: 430px) {
+  body {
+    padding: 0px 30px;
+  }
+  ul {
+    font-size: 14px;
+  }
+  li button {
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>memo</title>
+    <link rel="stylesheet" href="./style2.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/c099106b3e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <article class="container">
+      <h1>Take Notes <i class="fa-solid fa-table-list"></i></h1>
+      <form>
+        <input class="text" type="text" placeholder="제목을 입력해보세요!" />
+        <div class="text-wrapper">
+          <textarea
+            name=""
+            id=""
+            placeholder="내용을 입력해 보세요."
+          ></textarea>
+          <button class="add"><i class="fa-solid fa-plus"></i></button>
+        </div>
+      </form>
+      <ul class="list-wrap"></ul>
+
+      <button class="delAll">모두 삭제</button>
+    </article>
+
+    <script src="list2.js"></script>
+  </body>
+</html>
