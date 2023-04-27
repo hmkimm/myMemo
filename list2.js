@@ -6,23 +6,22 @@ const delAll = document.querySelector(".delAll");
 const display = document.querySelector("display");
 
 let todos = [];
-const save = () => {
+function save() {
   localStorage.setItem("todos", JSON.stringify(todos));
-};
+}
 
 const delItem = (event) => {
   const target = event.target.parentElement;
 
   todos = todos.filter((todo) => todo.id != target.id);
 
-  // save();
-  target.remove();
   save();
+  target.remove();
 };
 
 const addItem = (todo) => {
   if (todo.text !== "") {
-    const liWrapper = document.createElement("div");
+    // const liWrapper = document.createElement("div");
     const li = document.createElement("li");
     const button = document.createElement("button");
     const span = document.createElement("span");
@@ -37,8 +36,9 @@ const addItem = (todo) => {
     button.addEventListener("click", delItem);
     delAll.addEventListener("click", delAllItem);
 
-    ul.append(liWrapper);
-    liWrapper.append(li, button);
+    ul.append(li);
+    li.append(button);
+    // liWrapper.append(li, button);
     li.append(p, span, span1);
     li.id = todo.id;
 
@@ -48,14 +48,14 @@ const addItem = (todo) => {
       li.classList.toggle("horizontal-line");
     });
     p.setAttribute("class", "date");
-    liWrapper.setAttribute("class", "wrapper");
+    // liWrapper.setAttribute("class", "wrapper");
   } else if (todo.text === "") {
     // alert("할 일을 입력하세요!");
   }
 };
 
 const delAllItem = (event) => {
-  const $liLists = document.querySelectorAll("div");
+  const $liLists = document.querySelectorAll("li");
   const yes = confirm("정말 모두 삭제하시겠습니까?");
 
   if (yes) {

@@ -86,8 +86,8 @@ ul {
 }
 li {
   padding: 0 10px;
-  width: 100%;
   font-size: 14px;
+  position: relative;
 }
 
 /* 리스트 스타일 */
@@ -103,7 +103,7 @@ li {
   background-color: white;
 }
 
-div button {
+li button {
   /* float: right; */
   background-color: black;
   color: white;
@@ -112,6 +112,9 @@ div button {
   height: 54px;
   border-radius: 0 4px 4px 0;
   box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .horizontal-line {
