@@ -4,24 +4,35 @@ const textarea = document.querySelector("textarea");
 const ul = document.querySelector("ul");
 const delAll = document.querySelector(".delAll");
 const display = document.querySelector("display");
+// const getCurrentDateTime = () => {
+//   const date = new Date();
+//   const year = date.getFullYear();
+//   const month = String(date.getMonth() + 1).padStart(2, "0");
+//   const day = String(date.getDate()).padStart(2, "0");
+//   const hours = String(date.getHours()).padStart(2, "0");
+//   const minutes = String(date.getMinutes()).padStart(2, "0");
+
+//   return `${year}-${month}-${day} ${hours}:${minutes}`;
+// };
 
 let todos = [];
-function save() {
+const save = () => {
   localStorage.setItem("todos", JSON.stringify(todos));
-}
+};
 
 const delItem = (event) => {
   const target = event.target.parentElement;
 
   todos = todos.filter((todo) => todo.id != target.id);
 
+  // 필터링 한 결과를 다시 로컬스토리지에 저장
   save();
+  // 화면에서 li삭제
   target.remove();
 };
 
 const addItem = (todo) => {
   if (todo.text !== "") {
-    // const liWrapper = document.createElement("div");
     const li = document.createElement("li");
     const button = document.createElement("button");
     const span = document.createElement("span");
@@ -32,15 +43,17 @@ const addItem = (todo) => {
     button.innerHTML = "X";
     span1.innerHTML = todo.context;
     p.innerHTML = new Date().toLocaleDateString();
+    p.innerHTML = getCurrentDateTime;
 
     button.addEventListener("click", delItem);
     delAll.addEventListener("click", delAllItem);
 
     ul.append(li);
-    li.append(button);
-    // liWrapper.append(li, button);
-    li.append(p, span, span1);
+    li.append(button, p, span, span1);
+    // 개별 삭제를 정확히 하기 위해 li에 todo 객체의 id 부여
     li.id = todo.id;
+
+    display.prepend(li);
 
     // li 스타일 적용
     li.classList.add("li-style");
@@ -48,9 +61,8 @@ const addItem = (todo) => {
       li.classList.toggle("horizontal-line");
     });
     p.setAttribute("class", "date");
-    // liWrapper.setAttribute("class", "wrapper");
   } else if (todo.text === "") {
-    // alert("할 일을 입력하세요!");
+    alert("할 일을 입력하세요!");
   }
 };
 
@@ -67,34 +79,38 @@ const delAllItem = (event) => {
 };
 
 const handler = (event) => {
+  // 엔터 누를때마다 submit(새로고침)되는거 방지
   event.preventDefault();
 
+  // 내가 작성한 li를 todo객체에 저장
   const todo = {
     id: Date.now(),
     text: input.value,
     context: textarea.value,
   };
 
+  // 위에서 생성된 객체를 todos배열에 입력
   todos.push(todo);
+
+  // li 생성
   addItem(todo);
+  // 생성한 li를 로컬스토리지에 todos 배열로 저장
   save();
 
   input.value = "";
   textarea.value = "";
-  // display.prepend(ul);
-
-  // 로컬스토리지에 todos 배열을 저장합니다.
-  localStorage.setItem("todos", JSON.stringify(todos));
+  // ul.prepend("li");
 };
 
 form.addEventListener("submit", handler);
 
 const init = () => {
+  //로컬에서 저장된 배열 가져온 후, 그것을 다시 객체 문법으로 바꿔주기
   const userTodos = JSON.parse(localStorage.getItem("todos"));
-  //저장된 거 화면에 띄우기
 
+  //userTodos가 있는 경우에 실행하게
   if (userTodos) {
-    //userTodos가 있는 경우에 실행하게
+    //위에서 가져온 배열 안에 있는 todo객체를 forEach로 순회하면서 다시 화면에 띄우기
     userTodos.forEach((todo) => {
       addItem(todo);
     });
@@ -102,5 +118,4 @@ const init = () => {
     todos = userTodos;
   }
 };
-
 init();
