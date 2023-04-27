@@ -43,7 +43,6 @@ const addItem = (todo) => {
     button.innerHTML = "X";
     span1.innerHTML = todo.context;
     p.innerHTML = new Date().toLocaleDateString();
-    p.innerHTML = getCurrentDateTime;
 
     button.addEventListener("click", delItem);
     delAll.addEventListener("click", delAllItem);
@@ -53,7 +52,7 @@ const addItem = (todo) => {
     // 개별 삭제를 정확히 하기 위해 li에 todo 객체의 id 부여
     li.id = todo.id;
 
-    display.prepend(li);
+    // display.prepend(li);
 
     // li 스타일 적용
     li.classList.add("li-style");

@@ -23,17 +23,18 @@ li {
 /* layout */
 
 body {
+  margin-top: 20px;
   padding: 0 80px;
   font-family: "Ubuntu", "Dovemayo_gothic", sans-serif;
+  background-color: #ccafac;
 }
 .text-wrapper {
   display: flex;
 }
 article {
   background-color: #f4dcb2;
-  /* height: 100vh */
+  border-radius: 10px;
   padding: 30px;
-  /* height: 800px; */
 }
 
 input {
