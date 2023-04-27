@@ -51,6 +51,7 @@ const addItem = (todo) => {
     li.append(button, p, span, span1);
     // 개별 삭제를 정확히 하기 위해 li에 todo 객체의 id 부여
     li.id = todo.id;
+    ul.prepend(li);
 
     // display.prepend(li);
 
@@ -98,7 +99,6 @@ const handler = (event) => {
 
   input.value = "";
   textarea.value = "";
-  // ul.prepend("li");
 };
 
 form.addEventListener("submit", handler);

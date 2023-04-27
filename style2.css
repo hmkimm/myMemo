@@ -78,12 +78,8 @@ h1 {
   margin-left: auto;
 }
 
-.list-wrap {
-  margin-bottom: 20px;
-}
-
 ul {
-  margin-top: 20px;
+  margin: 20px 0 30px;
 }
 li {
   padding: 0 10px;
@@ -138,8 +134,5 @@ li button {
   }
   ul {
     font-size: 14px;
-  }
-  li button {
-    background-color: transparent;
   }
 }
